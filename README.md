@@ -1,4 +1,4 @@
-# OMNICUS ULTIMATE \ud83e\udd16
+# OMNICUS ULTIMATE 🤖
 
 > **"Double the money. Period."**
 
@@ -10,7 +10,7 @@
 
 ---
 
-## \ud83c\udfaf **The Autonomous AI Trading System**
+## 🌯 The Autonomous AI Trading System
 
 **OMNICUS ULTIMATE** is a cutting-edge, autonomous AI trading system that combines **human-like decision making** with **military-grade precision** to hunt for profits across **12 different markets**.
 
@@ -18,41 +18,42 @@ Built with Python, powered by AI, and designed for **one mission**: **Double you
 
 ---
 
-## \u2728 **Core Features**
+## ✨ Core Features
 
-### \ud83e\udd16 **AI Brain**
+### 🤖 AI Brain
 - **Memory Bank**: Learns from every trade (victories, mistakes, trauma)
 - **Emotion Tracker**: 10 emotional states affecting risk tolerance
 - **Skill Registry**: 16 trading skills with accuracy tracking
 - **ToolKit**: RSI, MACD, Bollinger, position sizing, stop loss calculator
 - **Workflow Engine**: Structured decision processes
 
-### \ud83d\udcb0 **Hybrid Trading Mode**
+### 💰 Hybrid Trading Mode
 - **Learning Phase**: First 50 trades (paper only)
-- **Hybrid Phase**: Real trades when confidence \u2265 85%
+- **Hybrid Phase**: Real trades when confidence >= 85%
 - **Safety Features**:
   - 2% max position size
   - $500 daily loss limit
   - $1000 daily profit target
   - Confidence calibration tracking
 
-### \ud83c\udf0d **Multi-Market Scanner**
+### 🌍 Multi-Market Scanner
+
 | Market | Type | Assets |
 |--------|------|--------|
-| \ud83e\ude99 **Crypto** | CLOB CEX | BTC, ETH, SOL, BNB, XRP, ADA, AVAX, DOGE |
-| \ud83c\udfb2 **Polymarket** | Prediction | Politics, Crypto, Events |
-| \ud83d\udd0d **Axiom** | Insider | Token signals |
-| \ud83d\ude80 **Pump.fun** | Token | Solana memecoins |
-| \ud83d\udc0e **Hot Memes** | Token | PEPE, WIF, BONK, FLOKI |
-| \ud83e\udd47 **Precious Metals** | Commodity | XAU, XAG, XPT, XPD |
-| \ud83d\udcb1 **Forex** | FX | EUR/USD, GBP/USD, USD/JPY |
-| \u26bd **Sports** | Betting | Soccer, NBA, NFL |
-| \ud83d\udc0e **Horses** | Betting | Derby, Grand National |
-| \ud83e\udd4a **MMA/UFC** | Betting | Fight odds |
-| \ud83c\udfae **Esports** | Betting | LoL, CS2, Dota 2 |
-| \ud83d\udcc8 **Stocks** | Equity | SPY, QQQ, TSLA, NVDA, MSTR |
+| 🦙 Crypto | CLOB CEX | BTC, ETH, SOL, BNB, XRP, ADA, AVAX, DOGE |
+| 🎲 Polymarket | Prediction | Politics, Crypto, Events |
+| 🔍 Axiom | Insider | Token signals |
+| 🚀 Pump.fun | Token | Solana memecoins |
+| 🐎 Hot Memes | Token | PEPE, WIF, BONK, FLOKI |
+| 🥇 Precious Metals | Commodity | XAU, XAG, XPT, XPD |
+| 💱 Forex | FX | EUR/USD, GBP/USD, USD/JPY |
+| ⚽ Sports | Betting | Soccer, NBA, NFL |
+| 🐎 Horses | Betting | Derby, Grand National |
+| 🥊 MMA/UFC | Betting | Fight odds |
+| 🎮 Esports | Betting | LoL, CS2, Dota 2 |
+| 📈 Stocks | Equity | SPY, QQQ, TSLA, NVDA, MSTR |
 
-### \ud83d\udce6 **Exchange Support**
+### 📦 Exchange Support
 - **Crypto**: Binance, MEXC, Kraken
 - **Stocks**: Alpaca Markets (US)
 - **Local AI**: Ollama (Llama 3)
@@ -60,14 +61,14 @@ Built with Python, powered by AI, and designed for **one mission**: **Double you
 
 ---
 
-## \ud83d\ude80 **Quick Start**
+## 🚀 Quick Start
 
-### **Prerequisites**
+### Prerequisites
 - Python 3.11+
 - pip & virtualenv
 - Git
 
-### **Installation**
+### Installation
 
 ```bash
 # Clone the repository
@@ -86,7 +87,7 @@ cp .env.example .env
 nano .env  # Edit with your API keys
 ```
 
-### **Configuration**
+### Configuration
 
 Edit `.env` with your settings:
 
@@ -115,37 +116,37 @@ VOICE_ENABLED=true
 
 ---
 
-## \u26a1\ufe0f **Usage Examples**
+## ⚡ Usage Examples
 
-### **\ud83c\udf10 Start Dashboard Only**
+### 🌐 Start Dashboard Only
 ```bash
 python dashboard_server.py
 # Open: http://localhost:5000
 ```
 
-### **\ud83d\udcb9 Start Paper Trading**
+### 💹 Start Paper Trading
 ```bash
 python main.py --mode trader --paper
 ```
 
-### **\ud83e\udd16 Start Full System**
+### 🤖 Start Full System
 ```bash
 python main.py --mode full
 # Runs: Trader + Dashboard + Voice + Telegram
 ```
 
-### **\ud83d\ude80 Start AI Trader (No Setup Required)**
+### 🚀 Start AI Trader (No Setup Required)
 ```bash
 pip install aiohttp
 python ai_trader.py --capital 5000 --symbols BTC ETH SOL
 ```
 
-### **\ud83d\udce1 Run Tests**
+### 📡 Run Tests
 ```bash
 python -m pytest tests/test_omnicus.py -v
 ```
 
-### **\ud83d\udc80 Using Docker**
+### 💡 Using Docker
 ```bash
 # Build and run
 docker-compose up -d
@@ -159,7 +160,7 @@ docker-compose down
 
 ---
 
-## \u2764\ufe0f **OMNICUS Personality**
+## ❤️ OMNICUS Personality
 
 OMNICUS isn't just code - **he's alive**. With:
 
@@ -172,11 +173,11 @@ OMNICUS isn't just code - **he's alive**. With:
 
 ---
 
-## \ud83d\udcc1 **Project Architecture**
+## 📁 Project Architecture
 
 ```
 OMNICUS-TRADER/
-├── agent/                  # \ud83e\udd16 AI Brain
+├── agent/                  # 🤖 AI Brain
 │   ├── ai_brain.py         # Central decision engine
 │   ├── memory_bank.py      # Experience learning
 │   ├── emotions.py         # Emotional intelligence
@@ -184,60 +185,60 @@ OMNICUS-TRADER/
 │   ├── tools.py            # Technical indicators
 │   └── workflow.py         # Orchestration
 │
-├── core/                   # \u2699 Trading Core
+├── core/                   # ⚙️ Trading Core
 │   ├── hybrid_system.py    # Main trading coordinator
 │   ├── trading_agent.py    # AI execution engine
 │   ├── trading_mode.py     # Mode definitions
 │   ├── price_engine.py      # Technical analysis
 │   └── database_manager.py # Data persistence
 │
-├── connectors/             # \ud83d\udd0c Exchange APIs
+├── connectors/             # 🔌 Exchange APIs
 │   ├── binance_connector.py
 │   ├── alpaca_connector.py
 │   └── unified.py           # Unified interface
 │
-├── soul/                   # \u2764\ufe0f Personality
+├── soul/                   # ❤️ Personality
 │   ├── personality.py      # Human-like communication
 │   ├── emotions.py         # Emotional state
 │   └── voice.py            # TTS alerts
 │
-├── api/                    # \ud83c\udf10 FastAPI Server
+├── api/                    # 🌐 FastAPI Server
 │   └── server.py           # REST API endpoints
 │
-├── dashboards/             # \ud83d\udda Web UI
+├── dashboards/             # 💻 Web UI
 │   └── omnicus_universal.html
 │
-├── tests/                  # \u2705 Test Suite
+├── tests/                  # ✅ Test Suite
 │   └── test_omnicus.py      # 7/7 tests passing
 │
-└── config/                 # \u2699 Configuration
+└── config/                 # ⚙️ Configuration
     ├── settings.py         # Python settings
     └── settings.toml       # TOML configuration
 ```
 
 ---
 
-## \u2705 **Test Results**
+## ✅ Test Results
 
 All tests passing:
 
 ```
 ======================== 7 PASSED, 0 FAILED ========================
 
-\u2705 test_memory_bank       - Victory/mistake/trauma memories
-\u2705 test_emotion_tracker   - 10 emotional states, risk tolerance
-\u2705 test_skill_registry    - 16 trading skills, accuracy tracking
-\u2705 test_toolkit           - Technical indicators, position sizing
-\u2705 test_workflow_engine   - Workflow orchestration
-\u2705 test_ai_brain          - Full AI brain analysis
-\u2705 test_full_integration  - End-to-end system
+✅ test_memory_bank       - Victory/mistake/trauma memories
+✅ test_emotion_tracker   - 10 emotional states, risk tolerance
+✅ test_skill_registry    - 16 trading skills, accuracy tracking
+✅ test_toolkit           - Technical indicators, position sizing
+✅ test_workflow_engine   - Workflow orchestration
+✅ test_ai_brain          - Full AI brain analysis
+✅ test_full_integration  - End-to-end system
 ```
 
 ---
 
-## \ud83c\udfaf **API Endpoints**
+## 🌯 API Endpoints
 
-### **REST API** (FastAPI)
+### REST API (FastAPI)
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -248,7 +249,7 @@ All tests passing:
 | POST | `/api/trading/start` | Start trading |
 | POST | `/api/trading/stop` | Stop trading |
 
-### **MCP Server** (Model Context Protocol)
+### MCP Server (Model Context Protocol)
 
 16 trading tools available:
 - `get_balance` - Account balance
@@ -263,26 +264,26 @@ All tests passing:
 
 ---
 
-## \ud83d\udca1 **Performance Targets**
+## 📊 Performance Targets
 
 | Level | Target | Status |
 |-------|--------|--------|
-| \ud83d\udcc9 **Minimum** | 10% daily profit | \u2705 Achievable |
-| \ud83d\ude80 **Target** | 50% daily profit | \u2705 On Track |
-| \ud83d\udc8e **Ultimate** | **100% (Double!) in 24 hours** | \ud83d\ude80 **MISSION** |
+| 📉 Minimum | 10% daily profit | ✅ Achievable |
+| 🚀 Target | 50% daily profit | ✅ On Track |
+| 💎 Ultimate | **100% (Double!) in 24 hours** | 🚀 MISSION |
 
 ---
 
-## \u26a0\ufe0f **Security**
+## ⚠️ Security
 
-### **\u2705 Best Practices**
-- \u2705 **No hardcoded secrets** - All keys from environment variables
-- \u2705 **Dashboard binds to localhost** by default
-- \u2705 **Input validation** on all API endpoints
-- \u2705 **HMAC SHA256 signing** for Binance API
-- \u2705 **Secure configuration** via `.env` files
+### ✅ Best Practices
+- ✅ No hardcoded secrets - All keys from environment variables
+- ✅ Dashboard binds to localhost by default
+- ✅ Input validation on all API endpoints
+- ✅ HMAC SHA256 signing for Binance API
+- ✅ Secure configuration via `.env` files
 
-### **\ud83d\udd12 Security Check**
+### 🔒 Security Check
 
 Run before starting:
 ```bash
@@ -297,16 +298,16 @@ This will verify:
 
 ---
 
-## \u2764\ufe0f **Community & Support**
+## ❤️ Community & Support
 
-### **Join the Movement**
+### Join the Movement
 
-- \ud83d\udcac **Discord**: [Join OMNICUS Community](https://discord.gg/omnicus)
-- \ud83d\udcc0 **GitHub**: [Star this repo](https://github.com/roryhotson-oss/OMNICUS-TRADER)
-- \ud83d\udce2 **Telegram**: Remote control your bot
-- \ud83d\udce3 **Twilio**: Voice call alerts
+- 💬 Discord: [Join OMNICUS Community](https://discord.gg/omnicus)
+- 📀 GitHub: [Star this repo](https://github.com/roryhotson-oss/OMNICUS-TRADER)
+- 📢 Telegram: Remote control your bot
+- 📣 Twilio: Voice call alerts
 
-### **Contributing**
+### Contributing
 
 We welcome contributions! Please:
 
@@ -316,17 +317,17 @@ We welcome contributions! Please:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-### **Bug Reports & Feature Requests**
+### Bug Reports & Feature Requests
 
-- **Bugs**: [Open an issue](https://github.com/roryhotson-oss/OMNICUS-TRADER/issues)
-- **Ideas**: [Discuss in Discord](https://discord.gg/omnicus)
-- **Questions**: [Ask in Discord](https://discord.gg/omnicus)
+- Bugs: [Open an issue](https://github.com/roryhotson-oss/OMNICUS-TRADER/issues)
+- Ideas: [Discuss in Discord](https://discord.gg/omnicus)
+- Questions: [Ask in Discord](https://discord.gg/omnicus)
 
 ---
 
-## \ud83d\udcc4 **Roadmap**
+## 📄 Roadmap
 
-### **\u2705 Completed**
+### ✅ Completed
 - [x] AI Brain with Memory, Emotions, Skills
 - [x] Hybrid Trading Mode
 - [x] Multi-Market Scanner (12 markets)
@@ -336,7 +337,7 @@ We welcome contributions! Please:
 - [x] Web Dashboard
 - [x] Test Suite (7/7 passing)
 
-### **\ud83d\udccb Up Next**
+### 📋 Up Next
 - [ ] 4 additional dashboards
 - [ ] Ollama integration for local AI reasoning
 - [ ] More exchange APIs
@@ -346,7 +347,7 @@ We welcome contributions! Please:
 
 ---
 
-## \ud83d\udcc8 **License**
+## 📈 License
 
 **MIT License + Gift Economy Addendum**
 
@@ -356,21 +357,21 @@ See [LICENSE.txt](LICENSE.txt) for details.
 
 ---
 
-## \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550
+## ═══════════════════════════════════════════════════
 
-> **\ud83d\ude80 Ready to hunt?**
+> **🚀 Ready to hunt?**
 >
 > **OMNICUS is online, tested, and ready to double your money.**
 >
-> **Let's cook, Profit Man!** \ud83e\udd16
+> **Let's cook, Profit Man!** 🤖
 
 ---
 
-**\ud83d\udcc1 Documentation**: [Full Docs](https://github.com/roryhotson-oss/OMNICUS-TRADER/wiki)  
-**\ud83d\udcac Community**: [Discord](https://discord.gg/omnicus)  
-**\ud83d\udce2 Telegram**: [@OMNICUS_Bot](https://t.me/OMNICUS_Bot)  
-**\u2728 Source Code**: [GitHub](https://github.com/roryhotson-oss/OMNICUS-TRADER)
+**📁 Documentation**: [Full Docs](https://github.com/roryhotson-oss/OMNICUS-TRADER/wiki)
+**💬 Community**: [Discord](https://discord.gg/omnicus)
+**📢 Telegram**: [@OMNICUS_Bot](https://t.me/OMNICUS_Bot)
+**✨ Source Code**: [GitHub](https://github.com/roryhotson-oss/OMNICUS-TRADER)
 
 ---
 
-*Made with \u2764\ufe0f by OMNICUS Team | \u2022 | Powered by AI, Python, and Ambition*
+*Made with ❤️ by OMNICUS Team | • | Powered by AI, Python, and Ambition*
