@@ -7,13 +7,18 @@ Uses pyttsx3 for text-to-speech and SpeechRecognition for voice input.
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional
+from typing import Optional, List
 import asyncio
 import logging
 import sys
 import threading
 
 logger = logging.getLogger('OMNICUS.Voice')
+
+
+class VoiceEngineError(Exception):
+    """Custom exception for voice engine errors."""
+    pass
 
 
 class VoiceMode(Enum):
@@ -273,14 +278,19 @@ class VoiceEngine:
         """Check if currently speaking"""
         return self._speaking
     
-    def stop(self):
-        """Stop current speech"""
+    def stop(self) -> None:
+        """Stop current speech.
+        
+        Raises:
+            VoiceEngineError: If unable to stop the TTS engine
+        """
         self._speaking = False
         if self._tts_engine:
             try:
                 self._tts_engine.stop()
-            except:
-                pass
+            except Exception as e:
+                logger.error(f"Failed to stop TTS engine: {e}")
+                raise VoiceEngineError(f"Could not stop speech: {e}") from e
     
     def set_mode(self, mode: VoiceMode):
         """Set voice operation mode"""

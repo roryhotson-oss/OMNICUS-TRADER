@@ -228,27 +228,26 @@ def check_security():
                 issues.append(f"⚠️  {key} not set - required for live trading")
     
     # Check for hardcoded keys in code (basic check)
-    dangerous_patterns = ["api_key = "", "api_secret = "", "password = ""]
-    for py_file in Path(".").rglob("*.py"):
-        if "venv" in str(py_file) or "__pycache__" in str(py_file):
-            continue
-        try:
-            content = py_file.read_text()
-            for pattern in dangerous_patterns:
-
+    dangerous_patterns = [
+        "api_key =", "api_secret =", "password =", "secret =",
+        "token =", "private_key =", "auth_token ="
+    ]
+    safe_patterns = ["os.getenv(", "env(", "getenv("]
     
-    # Check for hardcoded keys in code (basic check)
-    dangerous_patterns = ["api_key =", "api_secret =", "password ="]
     for py_file in Path(".").rglob("*.py"):
-        if "venv" in str(py_file) or "__pycache__" in str(py_file):
+        # Skip virtual env, cache, and git directories
+        if any(x in str(py_file) for x in ["venv", "__pycache__", ".git"]):
             continue
         try:
             content = py_file.read_text()
             for pattern in dangerous_patterns:
-                if pattern in content and "os.getenv" not in content and "env(" not in content:
-                    issues.append(f"⚠️  Potential hardcoded secret in {py_file}")
-        except:
-            pass
+                if pattern in content:
+                    # Check if it's safely using environment variables
+                    is_safe = any(safe in content for safe in safe_patterns)
+                    if not is_safe:
+                        issues.append(f"⚠️  Potential hardcoded secret in {py_file}")
+        except Exception as e:
+            logger.debug(f"Error checking {py_file}: {e}")
     
     if issues:
         print("\n🔒 Security Check:")

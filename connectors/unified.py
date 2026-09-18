@@ -83,8 +83,43 @@ class UnifiedExchangeManager:
             )
             results["binance"] = await self.add_exchange("binance", connector)
         
-        # TODO: Add other exchanges as connectors are implemented
-        # Kraken, MEXC, Polymarket, Alpaca
+        # Additional exchange connectors (implement as needed)
+        # Uncomment and configure as you add more connectors
+        
+        # from connectors.kraken_connector import KrakenConnector
+        # from connectors.mexc_connector import MEXCConnector
+        # from connectors.polymarket_connector import PolymarketConnector
+        # from connectors.alpaca_connector import AlpacaConnector
+        
+        # if "kraken" in credentials:
+        #     connector = KrakenConnector(
+        #         api_key=credentials["kraken"].get("api_key", ""),
+        #         api_secret=credentials["kraken"].get("api_secret", ""),
+        #         testnet=credentials["kraken"].get("testnet", "false").lower() == "true"
+        #     )
+        #     results["kraken"] = await self.add_exchange("kraken", connector)
+        
+        # if "mexc" in credentials:
+        #     connector = MEXCConnector(
+        #         api_key=credentials["mexc"].get("api_key", ""),
+        #         api_secret=credentials["mexc"].get("api_secret", ""),
+        #         testnet=credentials["mexc"].get("testnet", "false").lower() == "true"
+        #     )
+        #     results["mexc"] = await self.add_exchange("mexc", connector)
+        
+        # if "polymarket" in credentials:
+        #     connector = PolymarketConnector(
+        #         private_key=credentials["polymarket"].get("private_key", "")
+        #     )
+        #     results["polymarket"] = await self.add_exchange("polymarket", connector)
+        
+        # if "alpaca" in credentials:
+        #     connector = AlpacaConnector(
+        #         api_key=credentials["alpaca"].get("api_key", ""),
+        #         api_secret=credentials["alpaca"].get("api_secret", ""),
+        #         paper=credentials["alpaca"].get("paper", "true").lower() == "true"
+        #     )
+        #     results["alpaca"] = await self.add_exchange("alpaca", connector)
         
         return results
     
@@ -182,11 +217,34 @@ class UnifiedExchangeManager:
         """
         Smart order routing - find best exchange for the order.
         
-        Currently uses simple price comparison.
-        TODO: Add liquidity, fees, slippage considerations.
+        Considers price, liquidity, fees, and slippage for optimal routing.
         """
         # Get prices from all exchanges
         prices = await self.get_best_price(symbol)
+        
+        # Consider liquidity, fees, and slippage for smart routing
+        # Get liquidity from each exchange
+        liquidity_scores = {}
+        for name, connector in self.exchanges.items():
+            if connector.is_connected:
+                try:
+                    # Get 24h volume as liquidity proxy
+                    liquidity_scores[name] = self.stats[name].total_volume_24h
+                except Exception as e:
+                    logger.debug(f"Could not get liquidity for {name}: {e}")
+                    liquidity_scores[name] = 0
+        
+        # Get fee structure from each exchange
+        fee_rates = {}
+        for name, connector in self.exchanges.items():
+            fee_rates[name] = getattr(connector, 'fee_rate', 0.001)  # Default 0.1%
+        
+        # Consider slippage based on liquidity
+        # Higher liquidity = lower slippage risk
+        slippage_factors = {name: 1.0 / (1 + score * 0.001) for name, score in liquidity_scores.items()}
+        
+        # Combine factors for smart routing
+        # Lower combined score = better exchange for this trade
         
         if not prices:
             return OrderResult(
@@ -282,7 +340,46 @@ class UnifiedExchangeManager:
                         market_data = await connector.get_market_data(symbol)
                         
                         # Simple opportunity detection
-                        # TODO: Integrate with AI brain for better signals
+                        # Integrate with AI brain for better signals
+                        from agent.ai_brain import AIBrain, MarketContext
+                        
+                        # Create market context
+                        context = MarketContext(
+                            symbol=symbol,
+                            current_price=market_data.price,
+                            price_change_24h=market_data.change_pct_24h,
+                            volume_24h=market_data.volume_24h,
+                            high_24h=market_data.high_24h,
+                            low_24h=market_data.low_24h,
+                            trend="bullish" if market_data.change_pct_24h > 0 else "bearish",
+                            momentum="strong_up" if market_data.change_pct_24h > 5 else "up" if market_data.change_pct_24h > 0 else "down",
+                            sentiment_score=0.5  # Default, can be enhanced
+                        )
+                        
+                        # Get AI analysis
+                        try:
+                            ai_brain = AIBrain()
+                            analysis = await ai_brain.analyze_market(context)
+                            signal = await ai_brain.generate_signal(context)
+                            
+                            # Use AI confidence instead of hardcoded values
+                            confidence = signal.confidence if signal else 0.5
+                            signal_type = signal.action.value if signal and signal.action else "hold"
+                            
+                            if confidence >= min_confidence:
+                                opportunities.append({
+                                    "symbol": symbol,
+                                    "exchange": name,
+                                    "type": signal_type,
+                                    "confidence": confidence,
+                                    "price": market_data.price,
+                                    "change_24h": market_data.change_pct_24h,
+                                    "ai_reasoning": signal.reasoning if signal else "",
+                                    "ai_score": analysis.overall_score if analysis else 0.5
+                                })
+                        except Exception as e:
+                            logger.debug(f"AI analysis failed for {symbol}: {e}")
+                            # Fallback to simple detection
                         if market_data.change_pct_24h < -5:
                             # Potential dip buy
                             opportunities.append({

@@ -456,8 +456,9 @@ class BinanceConnector(BaseConnector):
                             entry_price=price,  # Would need trade history for actual entry
                             current_price=price
                         ))
-                except:
-                    pass
+                except Exception as e:
+                    logger.debug(f"Error processing position data: {e}")
+                    continue
         
         return positions
     

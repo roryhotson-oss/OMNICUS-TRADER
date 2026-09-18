@@ -107,7 +107,8 @@ class RealMarketEngine:
         try:
             resp = requests.get(f"{RealMarketEngine.BASE_URL}/api/v3/ticker/24hr?symbol={symbol}", timeout=5)
             return resp.json() if resp.status_code == 200 else {}
-        except:
+        except Exception as e:
+            logger.debug(f"Error fetching ticker for {symbol}: {e}")
             return {}
     
     @staticmethod
@@ -115,7 +116,8 @@ class RealMarketEngine:
         try:
             resp = requests.get(f"{RealMarketEngine.BASE_URL}/api/v3/klines?symbol={symbol}&interval={interval}&limit={limit}", timeout=5)
             return resp.json() if resp.status_code == 200 else []
-        except:
+        except Exception as e:
+            logger.debug(f"Error fetching klines for {symbol}: {e}")
             return []
     
     @staticmethod
@@ -194,8 +196,9 @@ class RealMarketEngine:
                     'signal': signal,
                     'confidence': confidence
                 })
-            except:
-                pass
+            except Exception as e:
+                logger.debug(f"Error processing signal: {e}")
+                continue
         
         priority = {"BUY": 0, "SELL": 1, "HOLD": 2}
         results.sort(key=lambda x: (priority.get(x['signal'], 2), -x['confidence']))

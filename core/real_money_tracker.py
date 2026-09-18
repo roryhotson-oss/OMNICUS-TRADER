@@ -110,8 +110,8 @@ class RealMoneyTracker:
                     if line.startswith("STARTING_CAPITAL="):
                         try:
                             return float(line.split("=")[1].strip())
-                        except:
-                            pass
+                        except (ValueError, IndexError) as e:
+                            logger.debug(f"Error parsing STARTING_CAPITAL: {e}")
         return 10000.0
     
     def _init_database(self):

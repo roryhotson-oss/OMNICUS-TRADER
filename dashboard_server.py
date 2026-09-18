@@ -59,14 +59,19 @@ async def ws(websocket: WebSocket):
     try:
         while True:
             if await websocket.receive_text() == "ping": await websocket.send_text("pong")
-    except: state.clients.remove(websocket) if websocket in state.clients else None
+    except Exception as e:
+        logger.error(f"WebSocket error: {e}")
+        if websocket in state.clients:
+            state.clients.remove(websocket)
 
 async def broadcast(data):
     msg = json.dumps(data)
     dead = []
     for c in state.clients:
         try: await c.send_text(msg)
-        except: dead.append(c)
+        except Exception as e:
+            logger.debug(f"Failed to send: {e}")
+            dead.append(c)
     for c in dead: state.clients.remove(c)
 
 @app.get("/api/status")
@@ -138,4 +143,3 @@ async def chat_with_omnicus(request: Request):
         return {"response": response_text, "status": "success"}
     except Exception as e:
         return {"response": f"Error: {str(e)}", "status": "error"}
-CHAT_END; exec bash
